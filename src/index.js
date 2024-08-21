@@ -46,7 +46,7 @@ function decode(expr) {
         let word = '';
 
         for (let i = 0; i < binaryCode.length / 10; i++) {
-            let tenDigitsCode = code.slice(-10).join('');
+            let tenDigitsCode = code.splice(-10, 10).join('');
 
             let letter = '';
 
@@ -54,8 +54,6 @@ function decode(expr) {
                 if (tenDigitsCode.slice(j, j + 2) === '10') letter += '.';
                 if (tenDigitsCode.slice(j, j + 2) === '11') letter += '-';
             }
-
-            code.splice(-10, 10);
 
             word = `${MORSE_TABLE[letter]}${word}`;
         }
